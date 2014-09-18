@@ -35,7 +35,7 @@ var sources = [
 				result.push({
 					id: a.id,
 					name: a.header,
-					link: a.detail_url
+					link: 'www.bezrealitky.cz' + a.detail_url
 				});
 			});
 
@@ -74,7 +74,7 @@ var sources = [
 				result.push({
 					id: a.id,
 					name: a.header,
-					link: a.detail_url
+					link: 'www.bezrealitky.cz' + a.detail_url
 				});
 			});
 
