@@ -1,6 +1,7 @@
 var querystring = require('querystring');
 var estatecrawler = require('./estatecrawler');
 var fs = require('fs');
+var exec = require('child_process').exec;
 
 var sources = [
 	{
@@ -181,6 +182,10 @@ var sources = [
 	}
 ];
 
+if (fs.exists('/tmp/new_estates')) {
+	fs.unlinkSync('/tmp/new_estates');
+}
+
 sources.forEach(function(source) {
 	var crawler = estatecrawler.crawler(source);
 
@@ -223,6 +228,14 @@ function save(name, data) {
 }
 
 function reportFresh(name, data) {
+	data.forEach(function (new) {
+		fs.appendFile('/tmp/new_estates', new.link + '\n');
+	});
+	
 	console.log('New estates: ' + name);
 	console.log(data);
 }
+
+process.on('exit', function (){
+	exec('mail -s “New Estates” iv.sevcik@gmail.com < /tmp/new_estates');
+});
