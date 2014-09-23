@@ -2,6 +2,7 @@ var querystring = require('querystring');
 var estatecrawler = require('./estatecrawler');
 var fs = require('fs');
 var exec = require('child_process').exec;
+var moment = require('moment');
 
 var sources = [
 	{
@@ -227,8 +228,10 @@ function save(name, data) {
 }
 
 function reportFresh(name, data) {
+	var date = moment().format('YYYY_MM_DD_HH_mm_ss');
 	data.forEach(function (estate) {
 		fs.appendFile('/tmp/new_estates', estate.link + '\n');
+		fs.appendFile('/data/' + date, estate.link + '\n');
 	});
 	
 	console.log('New estates: ' + name);
