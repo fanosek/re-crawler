@@ -182,9 +182,8 @@ var sources = [
 	}
 ];
 
-if (fs.exists('/tmp/new_estates')) {
-	fs.unlinkSync('/tmp/new_estates');
-}
+fs.unlink('/tmp/new_estates');
+fs.mkdir('data/');
 
 sources.forEach(function(source) {
 	var crawler = estatecrawler.crawler(source);
