@@ -227,11 +227,12 @@ function save(name, data) {
 	});
 }
 
-function reportFresh(name, data) {
-	var date = moment().format('YYYY_MM_DD_HH_mm_ss');
+var date = moment().format('YYYY_MM_DD_HH_mm_ss');
+
+function reportFresh(name, data) {	
 	data.forEach(function (estate) {
 		fs.appendFile('/tmp/new_estates', estate.link + '\n');
-		fs.appendFile('/data/' + date, estate.link + '\n');
+		fs.appendFile('data/' + date, estate.link + '\n');
 	});
 	
 	console.log('New estates: ' + name);
