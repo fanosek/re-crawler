@@ -236,5 +236,5 @@ function reportFresh(name, data) {
 }
 
 process.on('exit', function (){
-	exec('mail -s “New Estates” iv.sevcik@gmail.com < /tmp/new_estates');
+	exec('mail -s "New Estates" iv.sevcik@gmail.com < /tmp/new_estates');
 });
