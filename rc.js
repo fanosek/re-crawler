@@ -227,8 +227,8 @@ function save(name, data) {
 }
 
 function reportFresh(name, data) {
-	data.forEach(function (new) {
-		fs.appendFile('/tmp/new_estates', new.link + '\n');
+	data.forEach(function (estate) {
+		fs.appendFile('/tmp/new_estates', estate.link + '\n');
 	});
 	
 	console.log('New estates: ' + name);
