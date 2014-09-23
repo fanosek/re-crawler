@@ -181,6 +181,8 @@ var sources = [
 	}
 ];
 
+fs.mkdir('data/');
+
 sources.forEach(function(source) {
 	var crawler = estatecrawler.crawler(source);
 
