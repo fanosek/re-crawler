@@ -178,8 +178,52 @@ var sources = [
 		        crawler.queue(a.href);
 		    });
 		}
+	},
+	{
+		name: 'wiki_najem',
+		data_format: 'html',
+		get_url: 'http://www.wikireality.cz/hledat/vysledky/zlin?search_adverttype[0]=2&search_disposition[0]=1&search_disposition[1]=2&search_disposition[2]=3&search_disposition[3]=4&search_gpsNelat=49.2990687&search_gpsNelng=17.7911742&search_gpsSwlat=49.1630163&search_gpsSwlng=17.56183950000002',
+		parser: function(crawler, array, $) {
+			$("div.item").each(function(index,a) {
+				a = $(a);
+				//console.log(a.find('.nadpis a').attr('href'));
+		        array.push({
+		        	id: a.find('h3 a').attr('href').match(/detail\/([^-]+)-/)[1],
+		        	name: a.find('h3 a').text(),
+		        	link: 'http://www.wikireality.cz' + a.find('h3 a').attr('href')
+		        });
+		    });
+
+		    $("a.next").each(function(index,a) {
+		        crawler.queue(a.href);
+		    });
+		}
+	},
+	{
+		name: 'wiki_prodej',
+		data_format: 'html',
+		get_url: 'http://www.wikireality.cz/hledat/vysledky/zlin?search_adverttype[0]=1&search_estatetype[0]=1&search_disposition[0]=5&search_disposition[1]=6&search_gpsNelat=49.2990687&search_gpsNelng=17.7911742&search_gpsSwlat=49.1630163&search_gpsSwlng=17.56183950000002',
+		parser: function(crawler, array, $) {
+			$("div.item").each(function(index,a) {
+				a = $(a);
+				//console.log(a.find('.nadpis a').attr('href'));
+		        array.push({
+		        	id: a.find('h3 a').attr('href').match(/detail\/([^-]+)-/)[1],
+		        	name: a.find('h3 a').text(),
+		        	link: 'http://www.wikireality.cz' + a.find('h3 a').attr('href')
+		        });
+		    });
+
+		    $("a.next").each(function(index,a) {
+		        crawler.queue(a.href);
+		    });
+		}
 	}
 ];
+
+var globals = {
+	skip: ['luhačovice']
+};
 
 fs.mkdir('data/');
 
