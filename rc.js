@@ -8,7 +8,7 @@ var globals = {
 	skip: ['luhačovice']
 };
 
-fs.mkdir('data/');
+fs.mkdir('data/', function (err) { });
 
 sources.forEach(function(source) {
 	var crawler = estatecrawler.crawler(source);
