@@ -17,7 +17,7 @@ sources.forEach(function(source) {
 		save(definition.name, data);
 	});
 
-	console.log("Starting crawling: " + source.name);
+	//console.log("Starting crawling: " + source.name);
 	crawler.crawl();
 });
 
@@ -52,6 +52,6 @@ function save(name, data) {
 }
 
 function reportFresh(name, data) {
-	console.log('New estates: ' + name);
-	console.log(data);
+	//console.log('New estates: ' + name);
+	//console.log(data);
 }
