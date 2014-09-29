@@ -20,7 +20,7 @@ sources.forEach(function(source) {
 		save(definition.name, data);
 	});
 
-	console.log("Starting crawling: " + source.name);
+	//console.log("Starting crawling: " + source.name);
 	crawler.crawl();
 });
 
@@ -61,9 +61,6 @@ function reportFresh(name, data) {
 		fs.appendFile('/tmp/new_estates', estate.link + '\n');
 		fs.appendFile('data/' + date, estate.link + '\n');
 	});
-	
-	console.log('New estates: ' + name);
-	console.log(data);
 }
 
 process.on('exit', function (){
