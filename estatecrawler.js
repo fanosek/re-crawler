@@ -25,7 +25,11 @@ EstateCrawler.prototype.crawl_html = function() {
 	var crawler = new Crawler({
 		"maxConnections": 10,
 		"callback": function(error,result,$) {
-			self.definition.parser(crawler, array, $);
+			if (error) {
+				console.print('error getting content from: ' + self.definition.name);
+			} else {
+				self.definition.parser(crawler, array, $);
+			}
 		},
 		"onDrain": function() {
 			self.emit('end', self.definition, array);
