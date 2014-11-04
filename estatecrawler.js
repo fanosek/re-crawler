@@ -26,7 +26,7 @@ EstateCrawler.prototype.crawl_html = function() {
 		"maxConnections": 10,
 		"callback": function(error,result,$) {
 			if (error) {
-				console.print('error getting content from: ' + self.definition.name);
+				console.log('error getting content from: ' + self.definition.name);
 			} else {
 				self.definition.parser(crawler, array, $);
 			}
